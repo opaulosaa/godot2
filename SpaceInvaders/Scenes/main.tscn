@@ -24,12 +24,16 @@ position = Vector2(0, 307)
 [node name="Walls" type="Node" parent="."]
 
 [node name="LeftWall" type="Area2D" parent="Walls"]
+collision_layer = 32
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
 position = Vector2(-569.5, 0)
 shape = SubResource("RectangleShape2D_bskfi")
 
 [node name="RigthWall" type="Area2D" parent="Walls"]
+collision_layer = 32
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RigthWall"]
 position = Vector2(569.5, 0)

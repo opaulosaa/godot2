@@ -93,7 +93,7 @@ script = ExtResource("1_xjixy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_ct04a")
+texture = ExtResource("8_t5k43")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sftpw")
@@ -102,3 +102,6 @@ shape = SubResource("CircleShape2D_sftpw")
 libraries = {
 "": SubResource("AnimationLibrary_i0nhy")
 }
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

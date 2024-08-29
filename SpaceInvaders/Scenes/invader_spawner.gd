@@ -50,10 +50,12 @@ func _on_timer_timeout():
 
 
 func _on_left_wall_area_entered(area):
-	pass # Replace with function body.
+	if movement_direction == -1:
+		position.y += position_y_increment
+		movement_direction *= -1
 
 
 func _on_rigth_wall_area_entered(area):
 	if movement_direction == 1:
-		position.y = position_y_increment
+		position.y += position_y_increment
 		movement_direction *= -1
