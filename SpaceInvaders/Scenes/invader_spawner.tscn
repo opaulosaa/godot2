@@ -10,4 +10,9 @@ script = ExtResource("1_wcjir")
 wait_time = 0.25
 autostart = true
 
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]

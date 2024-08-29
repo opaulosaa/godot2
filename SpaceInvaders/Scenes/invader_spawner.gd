@@ -12,7 +12,9 @@ const position_x_increment = 10
 const position_y_increment = 20
 
 var invader_scene = preload("res://Scenes/invader.tscn")
+var invader_shot_scene = preload("res://Scenes/invader_shot.tscn")
 @onready var timer = $Timer
+@onready var shot_timer = $ShotTimer
 var movement_direction = 1
 
 func _ready():
@@ -59,3 +61,10 @@ func _on_rigth_wall_area_entered(area):
 	if movement_direction == 1:
 		position.y += position_y_increment
 		movement_direction *= -1
+
+
+func _on_shot_timer_timeout():
+	var shot_position = get_children().filter(func(child): return child as Invader).map(func(invader): return invader.global_position).pick_random()
+	var invader_shot = invader_shot_scene.instantiate() as InvaderShot
+	invader_shot.global_position = shot_position
+	get_tree().root.add_child(invader_shot)
