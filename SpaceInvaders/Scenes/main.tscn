@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://de2jr8c1p1xqy"]
+
+[ext_resource type="PackedScene" uid="uid://chgnpxff3nkhm" path="res://Scenes/area_2d.tscn" id="1_4auoj"]
+[ext_resource type="PackedScene" uid="uid://vbd2n0ihsqjo" path="res://Scenes/bullet_catcher.tscn" id="2_5ybyn"]
+[ext_resource type="PackedScene" uid="uid://cqd8a1tmx567h" path="res://Scenes/invader_spawner.tscn" id="3_4avjd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bskfi"]
+size = Vector2(13, 646)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5ovi"]
+size = Vector2(1150, 51)
+
+[node name="Main" type="Node"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_4auoj")]
+position = Vector2(0, 307)
+
+[node name="BulletCatcher" parent="." instance=ExtResource("2_5ybyn")]
+
+[node name="InvaderSpawner" parent="." instance=ExtResource("3_4avjd")]
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="LeftWall" type="Area2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
+position = Vector2(-569.5, 0)
+shape = SubResource("RectangleShape2D_bskfi")
+
+[node name="RigthWall" type="Area2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RigthWall"]
+position = Vector2(569.5, 0)
+shape = SubResource("RectangleShape2D_bskfi")
+
+[node name="BottomWall" type="Area2D" parent="Walls"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall"]
+position = Vector2(-1, 297.5)
+shape = SubResource("RectangleShape2D_u5ovi")
+
+[connection signal="area_entered" from="Walls/LeftWall" to="InvaderSpawner" method="_on_left_wall_area_entered"]
+[connection signal="area_entered" from="Walls/RigthWall" to="InvaderSpawner" method="_on_rigth_wall_area_entered"]
